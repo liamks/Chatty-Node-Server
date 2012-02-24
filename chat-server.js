@@ -1,4 +1,7 @@
-var io = require('socket.io').listen(3000);
+//this line is necessary for heroku
+var port = process.env.PORT || 5001
+
+var io = require('socket.io').listen(port);
 var _ = require('underscore')._;
 var users = {};
 
