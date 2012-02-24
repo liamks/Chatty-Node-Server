@@ -1,7 +1,10 @@
 //this line is necessary for heroku
 var port = process.env.PORT || 5001;
 
-var io = require('socket.io').listen(port);
+var app = express.createServer();
+var io = require('socket.io').listen(app);
+app.listen(port);
+
 var _ = require('underscore')._;
 var users = {};
 
@@ -9,7 +12,7 @@ var users = {};
 io.set("transports", ["xhr-polling", "flashsocket", "json-polling"]); 
 io.set("polling duration", 10); 
 
-console.log(io.sockets)
+
 io.sockets.on('connection', function (socket) {
   var user;
 
