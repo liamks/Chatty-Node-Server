@@ -1,12 +1,8 @@
 //this line is necessary for heroku
 var port = process.env.PORT || 5001;
-
-
-var app = require('express').createServer();
-app.listen(port);
-
+var app = require('http').createServer();
 var io = require('socket.io').listen(app);
-
+app.listen(port);
 
 var _ = require('underscore')._;
 var users = {};
