@@ -5,10 +5,9 @@ var io = require('socket.io').listen(port);
 var _ = require('underscore')._;
 var users = {};
 
-io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-});
+
+io.set("transports", ["xhr-polling", "flashsocket", "json-polling"]); 
+io.set("polling duration", 10); 
 
 console.log(io.sockets)
 io.sockets.on('connection', function (socket) {
