@@ -10,6 +10,7 @@ io.configure(function () {
   io.set("polling duration", 10); 
 });
 
+console.log(io.sockets)
 io.sockets.on('connection', function (socket) {
   var user;
 
