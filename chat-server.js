@@ -1,20 +1,15 @@
-//this line is necessary for heroku
-var port = process.env.PORT || 5001;
+
 var app = require('http').createServer();
 var io = require('socket.io')
-
-io.set("transports", ["xhr-polling", "flashsocket", "json-polling"]); 
-io.set("polling duration", 10); 
-
-io.listen(app);
-app.listen(port);
-
 var _ = require('underscore')._;
+
+io = io.listen(app);
+io.configure(function(){
+  io.set("transports", ["xhr-polling", "flashsocket", "json-polling"]); 
+  io.set("polling duration", 10); 
+})
+
 var users = {};
-
-
-
-
 
 io.sockets.on('connection', function (socket) {
   var user;
@@ -39,3 +34,6 @@ io.sockets.on('connection', function (socket) {
     };
   })
 });
+//this line is necessary for heroku
+var port = process.env.PORT || 5001;
+app.listen(port);
