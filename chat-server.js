@@ -7,6 +7,7 @@ io = io.listen(app);
 io.configure(function(){
   io.set("transports", ["xhr-polling"]); 
   io.set("polling duration", 10); 
+  io.set("close timeout", 10);
 })
 
 var users = {};
