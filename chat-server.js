@@ -1,11 +1,11 @@
 
 var app = require('http').createServer();
-var io = require('socket.io')
+var io = require('socket.io');
 var _ = require('underscore')._;
 
 io = io.listen(app);
 io.configure(function(){
-  io.set("transports", ["xhr-polling", "flashsocket", "json-polling"]); 
+  io.set("transports", ["xhr-polling"]); 
   io.set("polling duration", 10); 
 })
 
