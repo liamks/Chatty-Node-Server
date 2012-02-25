@@ -20,7 +20,7 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('new-user', function (data) {
     user = data
-    users[user.uuid] = data
+    users[user.id] = data
     socket.broadcast.emit('new-user-connected', data);
   });
 
@@ -31,7 +31,7 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('disconnect', function(){
     if(user){
-      delete users[user.uuid];
+      delete users[user.id];
       socket.broadcast.emit('user-disconnected', user);
     };
   })
